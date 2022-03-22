@@ -14,7 +14,7 @@ app.get('/isallowed/0', (request, response) => {
 	let success = false;
 	let errorMessage = null;
 
-	axios.get('http://192.168.180.70/isallowed/0')
+	axios.get('https://5333-14-139-226-226.ngrok.io/isallowed/0')
 		.then((response) => {
 			console.log('recieved ', response.data, ' from hardware');
 			success = true;
@@ -37,7 +37,7 @@ app.get('/isallowed/1', (request, response) => {
 	let success = false;
 	let errorMessage = null;
 
-	axios.get('http://192.168.180.70/isallowed/1')
+	axios.get('https://5333-14-139-226-226.ngrok.io/isallowed/1')
 	.then((response) => {
 		console.log('recieved ', response.data, ' from hardware');
 		success = true;
