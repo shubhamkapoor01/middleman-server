@@ -49,7 +49,7 @@ app.get('/isallowed/1', (request, response) => {
 			errorMessage8266 = error.message;
 		})
 
-	axios.get('/predict')
+	axios.get('https://9617-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
 			console.log('received ', response.data, ' from model');
 			if (response.data === 'Mask') {
