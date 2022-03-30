@@ -55,17 +55,17 @@ app.get('/isallowed/1', (request, response) => {
 	axios.get('https://e85f-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
 			console.log(response.data);
-			// if (response.data === 'Mask') {
-			// 	mask = true;
-			// } else {
-			// 	axios.get('https://access-verification-system.herokuapp.com/hasmask/0')
-			// 		.then((response) => {
-			// 			console.log('sent No Mask to webapp backend');
-			// 		})
-			// 		.catch((error) => {
-			// 			console.log('error in sending No Mask to webapp backend: ', error.message);
-			// 		})
-			// }
+			if (response.data.response === 'Mask') {
+				mask = true;
+			} else {
+				axios.get('https://access-verification-system.herokuapp.com/hasmask/0')
+					.then((response) => {
+						console.log('sent No Mask to webapp backend');
+					})
+					.catch((error) => {
+						console.log('error in sending No Mask to webapp backend: ', error.message);
+					})
+			}
 		})
 		.catch((error) => {
 			console.log(error);
