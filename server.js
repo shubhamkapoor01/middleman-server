@@ -39,6 +39,7 @@ app.get('/isallowed/1', (request, response) => {
 	let errorMessage8266 = null;
 	let errorMessageMask = null;
 
+	// ESP 8266 NGROK LINK UPDATE HERE
 	axios.get('https://5333-14-139-226-226.ngrok.io/isallowed/1')
 		.then((response) => {
 			console.log('recieved ', response.data, ' from hardware');
@@ -49,20 +50,22 @@ app.get('/isallowed/1', (request, response) => {
 			errorMessage8266 = error.message;
 		})
 
+	// ESP 32 NGROK LINK UPDATE HERE
 	axios.get('https://9617-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
 			console.log('received ', response.data, ' from model');
-			if (response.data === 'Mask') {
-				mask = true;
-			} else {
-				axios.get('https://access-verification-system.herokuapp.com/hasmask/0')
-					.then((response) => {
-						console.log('sent No Mask to webapp backend');
-					})
-					.catch((error) => {
-						console.log('error in sending No Mask to webapp backend: ', error.message);
-					})
-			}
+			console.log(response);
+			// if (response.data === 'Mask') {
+			// 	mask = true;
+			// } else {
+			// 	axios.get('https://access-verification-system.herokuapp.com/hasmask/0')
+			// 		.then((response) => {
+			// 			console.log('sent No Mask to webapp backend');
+			// 		})
+			// 		.catch((error) => {
+			// 			console.log('error in sending No Mask to webapp backend: ', error.message);
+			// 		})
+			// }
 		})
 		.catch((error) => {
 			console.log(error);
