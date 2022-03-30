@@ -54,7 +54,7 @@ app.get('/isallowed/1', (request, response) => {
 	// ML SERVER NGROK LINK UPDATE HERE 
 	axios.get('http://e85f-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
-			console.log(`recieved ${response.data} from model`);
+			console.log(response.data);
 			// if (response.data === 'Mask') {
 			// 	mask = true;
 			// } else {
