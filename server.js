@@ -52,7 +52,7 @@ app.get('/isallowed/1', (request, response) => {
 	
 	// ESP32 NGROK LINK UPDATE IN ML SERVER
 	// ML SERVER NGROK LINK UPDATE HERE 
-	axios.get('https://9617-103-225-191-74.ngrok.io/predict')
+	axios.get('http://e85f-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
 			console.log(`recieved ${response.data} from model`);
 			// if (response.data === 'Mask') {
