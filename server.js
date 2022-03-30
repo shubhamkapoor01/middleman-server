@@ -53,8 +53,7 @@ app.get('/isallowed/1', (request, response) => {
 	// ESP 32 NGROK LINK UPDATE HERE
 	axios.get('https://9617-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
-			console.log('received ', response.data, ' from model');
-			console.log(response);
+			console.log(`recieved ${response.data} from model`);
 			// if (response.data === 'Mask') {
 			// 	mask = true;
 			// } else {
