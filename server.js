@@ -49,8 +49,9 @@ app.get('/isallowed/1', (request, response) => {
 			console.log(error);
 			errorMessage8266 = error.message;
 		})
-
-	// ESP 32 NGROK LINK UPDATE HERE
+	
+	// ESP32 NGROK LINK UPDATE IN ML SERVER
+	// ML SERVER NGROK LINK UPDATE HERE 
 	axios.get('https://9617-103-225-191-74.ngrok.io/predict')
 		.then((response) => {
 			console.log(`recieved ${response.data} from model`);
