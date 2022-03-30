@@ -34,21 +34,45 @@ app.get('/isallowed/0', (request, response) => {
 app.get('/isallowed/1', (request, response) => {
 	console.log('recieved isallowed/1 request from webapp');
 
+	let mask = false;
 	let success = false;
-	let errorMessage = null;
+	let errorMessage8266 = null;
+	let errorMessageMask = null;
 
 	axios.get('https://5333-14-139-226-226.ngrok.io/isallowed/1')
-	.then((response) => {
-		console.log('recieved ', response.data, ' from hardware');
-		success = true;
-	})
-	.catch((error) => {
-		console.log(error);
-		errorMessage = error.message;
-	})
+		.then((response) => {
+			console.log('recieved ', response.data, ' from hardware');
+			success = true;
+		})
+		.catch((error) => {
+			console.log(error);
+			errorMessage8266 = error.message;
+		})
 
-	if (success) {
-		response.send('access was granted');
+	axios.get('/predict')
+		.then((response) => {
+			console.log('received ', response.data, ' from model');
+			if (response.data === 'Mask') {
+				mask = true;
+			} else {
+				axios.get('https://access-verification-system.herokuapp.com/hasmask/0')
+					.then((response) => {
+						console.log('sent No Mask to webapp backend');
+					})
+					.catch((error) => {
+						console.log('error in sending No Mask to webapp backend: ', error.message);
+					})
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+			errorMessageMask = error.message;
+		})
+
+	if (success && mask) {
+		response.send('access was granted and mask detected');
+	} else if (success && !mask) {
+		response.send('access was denied and mask not detected');
 	} else {
 		response.send('error: ', errorMessage);
 	}
