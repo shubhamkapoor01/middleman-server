@@ -40,7 +40,7 @@ app.get('/isallowed/1', (request, response) => {
 	let errorMessageMask = null;
 
 	// ESP 8266 NGROK LINK UPDATE HERE
-	axios.get('https://5333-14-139-226-226.ngrok.io/isallowed/1')
+	axios.get('https://167e-14-139-226-226.ngrok.io/isallowed/1')
 		.then((response) => {
 			console.log('recieved ', response.data, ' from hardware');
 			success = true;
