@@ -58,7 +58,7 @@ app.get('/isallowed/1', (request, response) => {
 			if (response.data.response === 'Mask') {
 				mask = true;
 			} else {
-				axios.get('https://access-verification-system.herokuapp.com/hasmask/0')
+				axios.get('http://access-verification-system.herokuapp.com/hasmask/0')
 					.then((response) => {
 						console.log('sent No Mask to webapp backend');
 					})
